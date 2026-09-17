@@ -1,0 +1,42 @@
+Third-party software in ghcr.io/tidoly-com/gotenberg-hwp images
+================================================================
+
+The image is Gotenberg's official image with one LibreOffice extension added.
+Nothing below is modified by tidoly.
+
+--------------------------------------------------------------------------------
+H2Orestart 0.7.14
+--------------------------------------------------------------------------------
+  What      LibreOffice extension that imports HWP documents (HWPX per upstream, not verified here)
+  Author    ebandal
+  License   GPL-3.0-or-later
+            ("either version 3 of the License, or (at your option) any later
+            version" — source file headers; full text: COPYING in the source)
+  Upstream  https://github.com/ebandal/H2Orestart
+  Binary    https://github.com/ebandal/H2Orestart/releases/download/v0.7.14/H2Orestart.oxt
+            sha256 cbea23bc37861361bbc534bc0675e5bc67b36f712072490f82a9bf410d7c04d8
+  In image  installed with `unopkg add --shared` (LibreOffice shared extensions)
+
+  Corresponding source
+    The complete corresponding source for the binary above is kept in this
+    repository so it stays available independently of upstream:
+      sources/H2Orestart-0.7.14-src.tar.gz
+      sha256 a73246fdfd00e7f7f69915e577b8d3e602113087cbed1c1e1ebba3087fde6a15
+      (= https://github.com/ebandal/H2Orestart/archive/refs/tags/v0.7.14.tar.gz)
+    It is provided for at least three years after the last image containing
+    this version is published. Requests: https://github.com/tidoly-com/gotenberg-hwp/issues
+
+--------------------------------------------------------------------------------
+Gotenberg 8.37.0 (base image gotenberg/gotenberg:8.37.0)
+--------------------------------------------------------------------------------
+  License   MIT
+  Upstream  https://github.com/gotenberg/gotenberg
+  The base image bundles further software (LibreOffice, Chromium, Debian
+  packages, a Java runtime) under their own licenses; see the upstream image
+  and /usr/share/doc/*/copyright inside the image.
+
+--------------------------------------------------------------------------------
+LibreOffice Java bridge (Debian package libreoffice-java-common, trixie-backports)
+--------------------------------------------------------------------------------
+  License   MPL-2.0 (see /usr/share/doc/libreoffice-java-common/copyright)
+  Upstream  https://www.libreoffice.org/
