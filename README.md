@@ -34,11 +34,11 @@ version and a new tag is built.
 ## Build
 
 ```sh
-build/build.sh              # build + push both architectures, then verify the manifest
-build/build.sh --load       # local single-arch build, no push
+build/build.sh              # local single-arch build + smoke test (no push)
+# publishing: GitHub Actions `publish` (native amd64/arm64 runners) on push to main
 ```
 
-Versions and the extension checksum are `ARG`s in the `Dockerfile`; `build/build.sh`
+Versions and the extension checksum are `ARG`s in the `Dockerfile`; `build/tag.sh`
 reads them from there.
 
 ## Licenses
