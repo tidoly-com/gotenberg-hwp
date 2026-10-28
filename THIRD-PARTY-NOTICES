@@ -27,7 +27,7 @@ H2Orestart 0.7.14
     this version is published. Requests: https://github.com/tidoly-com/gotenberg-hwp/issues
 
 --------------------------------------------------------------------------------
-Gotenberg 8.37.0 (base image gotenberg/gotenberg:8.37.0)
+Gotenberg 8.39.0 (base image gotenberg/gotenberg:8.39.0)
 --------------------------------------------------------------------------------
   License   MIT
   Upstream  https://github.com/gotenberg/gotenberg

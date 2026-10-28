@@ -5,10 +5,10 @@
 LibreOffice route converts **HWP** (Hancom Hangul) documents to PDF.
 
 ```
-ghcr.io/tidoly-com/gotenberg-hwp:8.37.0-h2o0.7.14      linux/amd64, linux/arm64
+ghcr.io/tidoly-com/gotenberg-hwp:8.39.0-h2o0.7.14      linux/amd64, linux/arm64
 ```
 
-Drop-in replacement for `gotenberg/gotenberg:8.37.0` — same entrypoint, flags and API.
+Drop-in replacement for `gotenberg/gotenberg:8.39.0` — same entrypoint, flags and API.
 
 ## Why
 

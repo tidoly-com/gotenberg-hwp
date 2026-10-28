@@ -6,7 +6,7 @@
 # H2Orestart adds the import filter; with it HWP converts in <1s.
 #
 # Tag = <gotenberg>-h2o<h2orestart>. Never reuse a tag: nodes pull IfNotPresent.
-ARG GOTENBERG_VERSION=8.37.0
+ARG GOTENBERG_VERSION=8.39.0
 FROM gotenberg/gotenberg:${GOTENBERG_VERSION}
 
 ARG GOTENBERG_VERSION
@@ -23,9 +23,16 @@ USER root
 
 # H2Orestart is a Java UNO extension. The base image ships a JRE (/opt/java)
 # but not LibreOffice's Java bridge. LibreOffice in the base image comes from
-# trixie-backports, so the bridge must come from the same suite to match.
-RUN apt-get update \
- && apt-get install -y --no-install-recommends -t trixie-backports libreoffice-java-common \
+# trixie-backports, so the bridge must come from the same suite and be pinned
+# to the installed LibreOffice version.
+# Since 8.39.0 the base image installs from backports and then drops that
+# suite from its apt sources, so we add it back for this one install.
+RUN printf 'Types: deb\nURIs: http://deb.debian.org/debian\nSuites: trixie-backports\nComponents: main\nSigned-By: /usr/share/keyrings/debian-archive-keyring.gpg\n' \
+      > /etc/apt/sources.list.d/gotenberg-hwp-backports.sources \
+ && apt-get update \
+ && apt-get install -y --no-install-recommends -t trixie-backports \
+      "libreoffice-java-common=$(dpkg-query -W -f='${Version}' libreoffice-core)" \
+ && rm /etc/apt/sources.list.d/gotenberg-hwp-backports.sources \
  && rm -rf /var/lib/apt/lists/*
 ENV JAVA_HOME=/opt/java
 
